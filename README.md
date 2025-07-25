@@ -1,5 +1,10 @@
 # Sistema de Empréstimo de Livros - Biblioteca Digital
 
+[![CI - Testes Automatizados](https://github.com/usuario/sistema-biblioteca/actions/workflows/ci.yml/badge.svg)](https://github.com/usuario/sistema-biblioteca/actions/workflows/ci.yml)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Docker](https://img.shields.io/badge/docker-supported-blue.svg)](https://www.docker.com/)
+[![TDD](https://img.shields.io/badge/methodology-TDD-green.svg)](https://en.wikipedia.org/wiki/Test-driven_development)
+
 Um sistema completo de gerenciamento de biblioteca desenvolvido seguindo a metodologia **TDD (Test-Driven Development)**, implementado em Python com integração a banco de dados SQLite.
 
 ## 🚀 Funcionalidades
@@ -40,6 +45,24 @@ O projeto possui **17 testes** cobrindo:
 - ✅ **3 testes** para classe Usuario
 - ✅ **7 testes** para classe Biblioteca
 - ✅ **3 testes** de integração com banco
+
+## 🔄 CI/CD - Integração Contínua
+
+O projeto utiliza **GitHub Actions** para automação:
+
+### Workflows Automatizados
+- ✅ **Testes em múltiplas versões** do Python (3.9, 3.10, 3.11)
+- ✅ **Testes com Docker** para garantir portabilidade
+- ✅ **Verificação de qualidade** de código (black, isort, flake8)
+- ✅ **Execução automática** a cada commit e pull request
+
+### Triggers
+- 🔄 **Push** em qualquer branch
+- 🔄 **Pull Request** para main/master
+- 🔄 **Execução manual** via GitHub interface
+
+### Status dos Testes
+O badge no topo do README mostra o status atual dos testes. Verde = todos os testes passando!
 
 ## 📋 Metodologia TDD
 
