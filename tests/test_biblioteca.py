@@ -80,3 +80,36 @@ class TestBiblioteca:
         # Assert
         assert resultado is False
         assert len(biblioteca.emprestimos) == 1
+    
+    def test_devolver_livro_sucesso(self):
+        """RED: Teste que falha - devolver livro emprestado"""
+        # Arrange
+        biblioteca = Biblioteca()
+        livro = Livro(titulo="1984", autor="George Orwell", isbn="978-0451524935")
+        usuario = Usuario(nome="João Silva", email="joao@email.com")
+        biblioteca.adicionar_livro(livro)
+        biblioteca.adicionar_usuario(usuario)
+        biblioteca.emprestar_livro(livro.id, usuario.id)
+        
+        # Act
+        resultado = biblioteca.devolver_livro(livro.id, usuario.id)
+        
+        # Assert
+        assert resultado is True
+        assert livro.disponivel is True
+        assert biblioteca.emprestimos[0]['data_devolucao'] is not None
+    
+    def test_devolver_livro_nao_emprestado(self):
+        """RED: Teste que falha - tentar devolver livro não emprestado"""
+        # Arrange
+        biblioteca = Biblioteca()
+        livro = Livro(titulo="1984", autor="George Orwell", isbn="978-0451524935")
+        usuario = Usuario(nome="João Silva", email="joao@email.com")
+        biblioteca.adicionar_livro(livro)
+        biblioteca.adicionar_usuario(usuario)
+        
+        # Act
+        resultado = biblioteca.devolver_livro(livro.id, usuario.id)
+        
+        # Assert
+        assert resultado is False
