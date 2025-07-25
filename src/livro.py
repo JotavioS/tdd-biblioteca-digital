@@ -16,3 +16,10 @@ class Livro(BaseModel):
         if 'id' not in data:
             data['id'] = str(uuid.uuid4())
         super().__init__(**data)
+    
+    def emprestar(self) -> bool:
+        """Empresta o livro se estiver disponível"""
+        if self.disponivel:
+            self.disponivel = False
+            return True
+        return False
