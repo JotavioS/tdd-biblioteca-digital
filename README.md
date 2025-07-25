@@ -1,6 +1,6 @@
 # Sistema de Empréstimo de Livros - Biblioteca Digital
 
-[![CI - Testes Automatizados](https://github.com/usuario/sistema-biblioteca/actions/workflows/ci.yml/badge.svg)](https://github.com/usuario/sistema-biblioteca/actions/workflows/ci.yml)
+[![CI - Testes Automatizados](https://img.shields.io/badge/automatic-tests-green.svg)](https://github.com/JotavioS/tdd-biblioteca-digital/actions/workflows/ci.yml)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Docker](https://img.shields.io/badge/docker-supported-blue.svg)](https://www.docker.com/)
 [![TDD](https://img.shields.io/badge/methodology-TDD-green.svg)](https://en.wikipedia.org/wiki/Test-driven_development)
