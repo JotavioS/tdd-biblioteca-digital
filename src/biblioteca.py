@@ -49,6 +49,34 @@ class Biblioteca:
         
         return False
     
+    def devolver_livro(self, livro_id: str, usuario_id: str) -> bool:
+        """Devolve um livro emprestado"""
+        # Encontrar o empréstimo ativo
+        emprestimo = self._encontrar_emprestimo_ativo(livro_id, usuario_id)
+        if not emprestimo:
+            return False
+        
+        # Encontrar o livro
+        livro = self._encontrar_livro(livro_id)
+        if not livro:
+            return False
+        
+        # Realizar a devolução
+        if livro.devolver():
+            emprestimo['data_devolucao'] = datetime.now()
+            return True
+        
+        return False
+    
+    def _encontrar_emprestimo_ativo(self, livro_id: str, usuario_id: str) -> Optional[Dict[str, Any]]:
+        """Encontra um empréstimo ativo para o livro e usuário especificados"""
+        for emprestimo in self.emprestimos:
+            if (emprestimo['livro_id'] == livro_id and 
+                emprestimo['usuario_id'] == usuario_id and 
+                emprestimo['data_devolucao'] is None):
+                return emprestimo
+        return None
+    
     def _encontrar_livro(self, livro_id: str) -> Optional[Livro]:
         """Encontra um livro pelo ID"""
         for livro in self.livros:

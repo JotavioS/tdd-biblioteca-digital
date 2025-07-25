@@ -23,3 +23,10 @@ class Livro(BaseModel):
             self.disponivel = False
             return True
         return False
+    
+    def devolver(self) -> bool:
+        """Devolve o livro tornando-o disponível novamente"""
+        if not self.disponivel:
+            self.disponivel = True
+            return True
+        return False
