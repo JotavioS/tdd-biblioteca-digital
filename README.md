@@ -65,17 +65,19 @@ O projeto foi desenvolvido seguindo rigorosamente o ciclo TDD:
 
 ## 🚀 Como Usar
 
-### Instalação
+### Opção 1: Instalação Local
+
+#### Instalação
 ```bash
 pip install -r requirements.txt
 ```
 
-### Executar Demonstração
+#### Executar Demonstração
 ```bash
 python main.py
 ```
 
-### Executar Testes
+#### Executar Testes
 ```bash
 # Todos os testes
 pytest -v
@@ -84,6 +86,50 @@ pytest -v
 pytest tests/test_livro.py -v
 pytest tests/test_biblioteca.py -v
 pytest tests/test_integration.py -v
+```
+
+### Opção 2: Usando Docker 🐳
+
+#### Pré-requisitos
+- Docker
+- Docker Compose
+
+#### Executar Demonstração com Docker
+```bash
+# Build e executar o sistema
+docker-compose up --build biblioteca
+
+# Ou usando docker diretamente
+docker build -t sistema-biblioteca .
+docker run --rm sistema-biblioteca
+```
+
+#### Executar Testes com Docker
+```bash
+# Executar todos os testes
+docker-compose --profile testing up --build biblioteca-tests
+
+# Ou usando docker diretamente
+docker build -t sistema-biblioteca .
+docker run --rm sistema-biblioteca pytest -v
+```
+
+#### Modo Desenvolvimento com Docker
+```bash
+# Abrir shell interativo no container
+docker-compose --profile development up -d biblioteca-dev
+docker exec -it sistema-biblioteca-dev /bin/bash
+
+# Dentro do container você pode executar:
+python main.py
+pytest -v
+```
+
+#### Persistência de Dados
+O banco de dados SQLite é persistido através de volumes Docker:
+```bash
+# Os dados ficam no diretório ./data do host
+ls -la ./data/
 ```
 
 ## 📈 Exemplo de Uso

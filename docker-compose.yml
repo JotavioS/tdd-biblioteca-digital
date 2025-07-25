@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  biblioteca:
+    build: .
+    container_name: sistema-biblioteca
+    volumes:
+      # Mount database directory for persistence
+      - ./data:/app/data
+      # Mount source code for development (optional)
+      - ./src:/app/src
+      - ./tests:/app/tests
+    environment:
+      - PYTHONPATH=/app
+    command: python main.py
+    
+  # Service for running tests
+  biblioteca-tests:
+    build: .
+    container_name: sistema-biblioteca-tests
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app
+    command: pytest -v
+    profiles:
+      - testing
+
+  # Service for development with interactive shell
+  biblioteca-dev:
+    build: .
+    container_name: sistema-biblioteca-dev
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    profiles:
+      - development
+
+volumes:
+  biblioteca_data:
+    driver: local
