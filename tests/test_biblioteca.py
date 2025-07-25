@@ -1,5 +1,3 @@
-import pytest
-
 from src.biblioteca import Biblioteca
 from src.livro import Livro
 from src.usuario import Usuario

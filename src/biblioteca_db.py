@@ -104,7 +104,7 @@ class BibliotecaDB:
 
     def listar_livros_disponiveis(self):
         """Lista todos os livros disponíveis"""
-        return self.db.query(LivroModel).filter(LivroModel.disponivel == True).all()
+        return self.db.query(LivroModel).filter(LivroModel.disponivel.is_(True)).all()
 
     def listar_emprestimos_ativos(self):
         """Lista todos os empréstimos ativos"""
